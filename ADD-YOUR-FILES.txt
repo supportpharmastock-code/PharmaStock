@@ -1,0 +1,9 @@
+Add these files before uploading to GitHub:
+
+assets/P-logo.png
+assets/dashboard.png
+assets/login.png
+assets/billing.png
+downloads/PharmaStock-Pro-Setup-1.0.0.exe
+
+Then open index.html to test the website.
