@@ -2,119 +2,865 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Download PharmaStock Pro pharmacy management software for Windows.">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="PharmaStock Pro is a modern pharmacy management software for medicine inventory, GST billing, expiry alerts, purchases, sales and reports."
+  >
+
+  <meta
+    name="keywords"
+    content="PharmaStock, pharmacy management software, medical store software, GST billing software, medicine inventory software"
+  >
+
+  <meta name="author" content="Manmohan Singh">
+
+  <meta name="theme-color" content="#04111c">
+
+  <meta property="og:title" content="PharmaStock Pro">
+  <meta
+    property="og:description"
+    content="Smart pharmacy management software for Windows."
+  >
+  <meta
+    property="og:image"
+    content="assets/P-logo.png"
+  >
+  <meta property="og:type" content="website">
+
   <title>PharmaStock Pro | Pharmacy Management Software</title>
-  <link rel="icon" href="assets/P-logo.png">
+
+  <link rel="icon" type="image/png" href="assets/P-logo.png">
+  <link rel="apple-touch-icon" href="assets/P-logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-glow"></div>
+
+    <img
+      src="assets/P-logo.png"
+      alt="PharmaStock Pro logo"
+      class="loader-logo"
+    >
+
+    <h2>PharmaStock <span>Pro</span></h2>
+    <p>Smart Pharmacy. Smarter Business.</p>
+
+    <div class="loader-line">
+      <span></span>
+    </div>
+  </div>
+
+  <!-- Background Effects -->
+  <div class="background-effects" aria-hidden="true">
+    <div class="background-grid"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="glow glow-three"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header -->
   <header class="header" id="home">
     <nav class="container nav">
-      <a class="brand" href="#home">
-        <img src="assets/P-logo.png" alt="PharmaStock logo">
-        <span>PharmaStock <b>Pro</b></span>
+
+      <a class="brand" href="#home" aria-label="PharmaStock Pro home">
+        <div class="brand-logo-wrap">
+          <img
+            src="assets/P-logo.png"
+            alt="PharmaStock logo"
+          >
+        </div>
+
+        <span>
+          PharmaStock
+          <b>Pro</b>
+        </span>
       </a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
         <a href="#features">Features</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#requirements">Requirements</a>
-        <a class="download-small" href="#download">Download</a>
+        <a href="#developer">Developer</a>
+
+        <a
+          class="download-small download-link"
+          href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.0/PharmaStock-Pro-Setup-1.0.0.exe"
+        >
+          Download
+        </a>
       </div>
+
     </nav>
   </header>
 
   <main>
+
+    <!-- Hero Section -->
     <section class="hero container">
+
       <div class="hero-copy reveal">
-        <span class="badge">● Version 1.0.0 available for Windows</span>
-        <h1>Smart pharmacy management, built for everyday business.</h1>
-        <p>Manage medicines, stock, purchases, sales, GST billing, expiry alerts and reports from one modern desktop application.</p>
-        <div class="hero-buttons" id="download">
-          <a class="primary download-link" href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.0/PharmaStock-Pro-Setup-1.0.0.exe" download>
-            <span>↓</span>
-            <div><small>Download for</small>Windows</div>
-          </a>
-          <a class="secondary" href="#screenshots">View Software</a>
+
+        <div class="hero-badges">
+          <span class="badge">
+            <i></i>
+            Version 1.0.0 Available
+          </span>
+
+          <span class="india-badge">
+            🇮🇳 Proudly Developed in India
+          </span>
         </div>
-        <div class="meta"><span>Windows 10/11</span><span>64-bit</span><span>Secure installer</span></div>
+
+        <h1>
+          The Future of
+          <span>Pharmacy Management.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Manage medicines, inventory, purchases, sales, GST billing,
+          expiry alerts and reports through one powerful Windows application.
+        </p>
+
+        <div class="hero-points">
+          <span>Fast Billing</span>
+          <span>Secure Data</span>
+          <span>Smart Inventory</span>
+        </div>
+
+        <div class="hero-buttons" id="download">
+
+          <a
+            class="primary download-link"
+            href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.0/PharmaStock-Pro-Setup-1.0.0.exe"
+          >
+            <span class="download-icon">↓</span>
+
+            <div>
+              <small>Download PharmaStock Pro</small>
+              Windows 10 / 11
+            </div>
+          </a>
+
+          <a class="secondary" href="#screenshots">
+            <span class="play-icon">▶</span>
+            View Software
+          </a>
+
+        </div>
+
+        <div class="meta">
+          <span>Windows 10 / 11</span>
+          <span>64-bit Recommended</span>
+          <span>Secure Installer</span>
+          <span>Version 1.0.0</span>
+        </div>
+
       </div>
 
+      <!-- Hero Software Preview -->
       <div class="hero-preview reveal">
+
+        <div class="preview-glow"></div>
+
         <div class="app-window">
-          <div class="window-bar"><span>● ● ●</span><b>PharmaStock Pro</b><span>Secure</span></div>
-          <img src="assets/dashboard.png" alt="PharmaStock dashboard preview">
+
+          <div class="window-bar">
+            <div class="window-controls">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+
+            <b>PharmaStock Pro</b>
+
+            <span class="secure-label">
+              <i></i>
+              Secure
+            </span>
+          </div>
+
+          <div class="window-image">
+            <img
+              src="assets/dashboard.png"
+              alt="PharmaStock Pro dashboard preview"
+            >
+
+            <div class="image-shine"></div>
+          </div>
+
           <div class="placeholder">
-            <aside><div>P</div><i></i><i></i><i></i><i></i></aside>
-            <section><h3></h3><div class="stats"><i></i><i></i><i></i></div><div class="chart"></div></section>
+            <aside>
+              <div>P</div>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </aside>
+
+            <section>
+              <h3></h3>
+
+              <div class="stats">
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+
+              <div class="chart"></div>
+            </section>
+          </div>
+
+        </div>
+
+        <div class="float-card stock-card">
+          <span class="float-icon success">✓</span>
+
+          <div>
+            <b>Stock Updated</b>
+            <small>Inventory synchronised</small>
           </div>
         </div>
-        <div class="float-card one"><b>✓ Stock Updated</b><small>Cloud sync completed</small></div>
-        <div class="float-card two"><b>! Expiry Alerts</b><small>Track expiring medicines</small></div>
+
+        <div class="float-card expiry-card">
+          <span class="float-icon warning">!</span>
+
+          <div>
+            <b>Expiry Alerts</b>
+            <small>Track expiring medicines</small>
+          </div>
+        </div>
+
+        <div class="float-card billing-card">
+          <span class="float-icon billing">₹</span>
+
+          <div>
+            <b>Fast Billing</b>
+            <small>GST-ready invoices</small>
+          </div>
+        </div>
+
       </div>
+
     </section>
 
+    <!-- Product Statistics -->
     <section class="quick-strip">
       <div class="container quick-grid">
-        <div><b>Inventory</b><span>Complete stock control</span></div>
-        <div><b>Billing</b><span>Fast GST-ready invoices</span></div>
-        <div><b>Reports</b><span>Clear business insights</span></div>
-        <div><b>Cloud</b><span>Secure data connectivity</span></div>
+
+        <div class="quick-item reveal">
+          <strong class="counter" data-target="100">0</strong>
+          <b>%</b>
+          <span>Organised Workflow</span>
+        </div>
+
+        <div class="quick-item reveal">
+          <strong class="counter" data-target="6">0</strong>
+          <b>+</b>
+          <span>Powerful Modules</span>
+        </div>
+
+        <div class="quick-item reveal">
+          <strong class="counter" data-target="64">0</strong>
+          <b>-bit</b>
+          <span>Windows Support</span>
+        </div>
+
+        <div class="quick-item reveal">
+          <strong>1.0.0</strong>
+          <span>Current Version</span>
+        </div>
+
       </div>
     </section>
 
+    <!-- Features -->
     <section class="section container" id="features">
-      <div class="section-title reveal"><span>POWERFUL FEATURES</span><h2>Everything your pharmacy needs</h2><p>Designed to reduce repetitive work and keep daily operations organised.</p></div>
+
+      <div class="section-title reveal">
+        <span>POWERFUL FEATURES</span>
+
+        <h2>
+          Everything your pharmacy
+          <em>needs in one place.</em>
+        </h2>
+
+        <p>
+          PharmaStock Pro helps reduce repetitive work and makes daily
+          pharmacy operations faster, clearer and more organised.
+        </p>
+      </div>
+
       <div class="feature-grid">
-        <article class="card reveal"><strong>▦</strong><h3>Medicine Inventory</h3><p>Add, edit and monitor medicine quantities, batches and pricing.</p></article>
-        <article class="card reveal"><strong>₹</strong><h3>GST Billing</h3><p>Create professional invoices with accurate tax calculations.</p></article>
-        <article class="card reveal"><strong>⌛</strong><h3>Expiry Alerts</h3><p>Identify medicines approaching expiry before they become a loss.</p></article>
-        <article class="card reveal"><strong>⇄</strong><h3>Purchase & Sales</h3><p>Keep purchase and sales activity organised and searchable.</p></article>
-        <article class="card reveal"><strong>⌁</strong><h3>Reports</h3><p>Understand stock and business performance through useful reports.</p></article>
-        <article class="card reveal"><strong>☁</strong><h3>Secure Cloud Data</h3><p>Access the latest synchronised pharmacy information securely.</p></article>
+
+        <article class="card reveal">
+          <div class="card-number">01</div>
+          <strong>▦</strong>
+          <h3>Medicine Inventory</h3>
+          <p>
+            Add, update and monitor medicine quantities, batches,
+            pricing and availability from one organised dashboard.
+          </p>
+          <span class="card-link">Smart stock control →</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-number">02</div>
+          <strong>₹</strong>
+          <h3>GST Billing</h3>
+          <p>
+            Create clear and professional invoices with accurate
+            GST and pricing calculations.
+          </p>
+          <span class="card-link">Faster invoicing →</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-number">03</div>
+          <strong>⌛</strong>
+          <h3>Expiry Alerts</h3>
+          <p>
+            Identify medicines approaching expiry before they
+            become a financial loss.
+          </p>
+          <span class="card-link">Reduce medicine loss →</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-number">04</div>
+          <strong>⇄</strong>
+          <h3>Purchase & Sales</h3>
+          <p>
+            Keep purchase and sales records organised, searchable
+            and easy to review.
+          </p>
+          <span class="card-link">Track transactions →</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-number">05</div>
+          <strong>⌁</strong>
+          <h3>Business Reports</h3>
+          <p>
+            Understand stock movement and pharmacy performance
+            through clear and useful reports.
+          </p>
+          <span class="card-link">Better decisions →</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-number">06</div>
+          <strong>☁</strong>
+          <h3>Secure Cloud Data</h3>
+          <p>
+            Keep the latest pharmacy information connected and
+            synchronised through secure cloud services.
+          </p>
+          <span class="card-link">Secure connectivity →</span>
+        </article>
+
       </div>
+
     </section>
 
+    <!-- Software Preview -->
     <section class="section preview-section" id="screenshots">
+
       <div class="container">
-        <div class="section-title reveal"><span>SOFTWARE PREVIEW</span><h2>A clean interface for daily work</h2><p>Add your final login, dashboard and billing screenshots here.</p></div>
+
+        <div class="section-title reveal">
+          <span>SOFTWARE PREVIEW</span>
+
+          <h2>
+            A clean interface designed
+            <em>for everyday work.</em>
+          </h2>
+
+          <p>
+            Explore the secure login, business dashboard and billing
+            system of PharmaStock Pro.
+          </p>
+        </div>
+
         <div class="screens-grid">
-          <figure class="big reveal"><img src="assets/dashboard.png" alt="Dashboard screenshot"><figcaption>Dashboard</figcaption></figure>
-          <figure class="reveal"><img src="assets/login.png" alt="Login screenshot"><figcaption>Secure Login</figcaption></figure>
-          <figure class="reveal"><img src="assets/billing.png" alt="Billing screenshot"><figcaption>Billing & Sales</figcaption></figure>
+
+          <figure
+            class="screen-card big reveal"
+            data-image="assets/dashboard.png"
+            data-title="PharmaStock Dashboard"
+          >
+            <div class="screen-image">
+              <img
+                src="assets/dashboard.png"
+                alt="PharmaStock dashboard screenshot"
+              >
+
+              <div class="screen-overlay">
+                <button
+                  class="view-image"
+                  type="button"
+                  aria-label="View dashboard screenshot"
+                >
+                  ⛶ View Fullscreen
+                </button>
+              </div>
+            </div>
+
+            <figcaption>
+              <div>
+                <b>Business Dashboard</b>
+                <span>Important pharmacy information at a glance</span>
+              </div>
+
+              <i>01</i>
+            </figcaption>
+          </figure>
+
+          <figure
+            class="screen-card reveal"
+            data-image="assets/login.png"
+            data-title="Secure Login"
+          >
+            <div class="screen-image">
+              <img
+                src="assets/login.png"
+                alt="PharmaStock secure login screenshot"
+              >
+
+              <div class="screen-overlay">
+                <button
+                  class="view-image"
+                  type="button"
+                  aria-label="View login screenshot"
+                >
+                  ⛶ View
+                </button>
+              </div>
+            </div>
+
+            <figcaption>
+              <div>
+                <b>Secure Login</b>
+                <span>Protected user access</span>
+              </div>
+
+              <i>02</i>
+            </figcaption>
+          </figure>
+
+          <figure
+            class="screen-card reveal"
+            data-image="assets/billing.png"
+            data-title="Billing and Sales"
+          >
+            <div class="screen-image">
+              <img
+                src="assets/billing.png"
+                alt="PharmaStock billing screenshot"
+              >
+
+              <div class="screen-overlay">
+                <button
+                  class="view-image"
+                  type="button"
+                  aria-label="View billing screenshot"
+                >
+                  ⛶ View
+                </button>
+              </div>
+            </div>
+
+            <figcaption>
+              <div>
+                <b>Billing & Sales</b>
+                <span>Fast GST-ready invoices</span>
+              </div>
+
+              <i>03</i>
+            </figcaption>
+          </figure>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- Why PharmaStock -->
+    <section class="section container">
+
+      <div class="why-grid">
+
+        <div class="why-content reveal">
+          <span class="small-title">WHY PHARMASTOCK PRO?</span>
+
+          <h2>
+            Built with pharmacy
+            operations in mind.
+          </h2>
+
+          <p>
+            PharmaStock Pro combines a modern design with practical
+            pharmacy tools, helping medical stores manage their work
+            efficiently.
+          </p>
+
+          <div class="why-points">
+
+            <div>
+              <span>✓</span>
+
+              <div>
+                <b>Simple to use</b>
+                <p>Clear interface designed for everyday pharmacy work.</p>
+              </div>
+            </div>
+
+            <div>
+              <span>✓</span>
+
+              <div>
+                <b>Organised information</b>
+                <p>Keep stock, billing and transactions in one place.</p>
+              </div>
+            </div>
+
+            <div>
+              <span>✓</span>
+
+              <div>
+                <b>Made for Windows</b>
+                <p>Desktop experience designed for modern computers.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="why-visual reveal">
+
+          <div class="visual-card visual-card-main">
+            <span>PharmaStock Pro</span>
+
+            <h3>Smart Pharmacy.<br>Smarter Business.</h3>
+
+            <div class="visual-chart">
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
+
+          <div class="visual-card mini-card">
+            <b>Secure</b>
+            <span>Cloud Connected</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Requirements -->
     <section class="section container" id="requirements">
+
       <div class="requirements reveal">
-        <div><span>WINDOWS APPLICATION</span><h2>Ready for your PC</h2><p>PharmaStock Pro is designed for modern Windows desktop systems.</p></div>
-        <div class="req-list">
-          <p><span>Operating system</span><b>Windows 10 or 11</b></p>
-          <p><span>Architecture</span><b>64-bit recommended</b></p>
-          <p><span>Internet</span><b>Required for cloud features</b></p>
-          <p><span>Version</span><b>1.0.0</b></p>
+
+        <div class="requirements-copy">
+          <span>WINDOWS APPLICATION</span>
+
+          <h2>Ready for your PC.</h2>
+
+          <p>
+            PharmaStock Pro is designed for modern Windows desktop
+            systems with secure internet connectivity.
+          </p>
+
+          <div class="requirement-tags">
+            <span>Windows 10</span>
+            <span>Windows 11</span>
+            <span>64-bit</span>
+          </div>
         </div>
+
+        <div class="req-list">
+
+          <p>
+            <span>Operating System</span>
+            <b>Windows 10 or Windows 11</b>
+          </p>
+
+          <p>
+            <span>Architecture</span>
+            <b>64-bit Recommended</b>
+          </p>
+
+          <p>
+            <span>Internet</span>
+            <b>Required for Cloud Features</b>
+          </p>
+
+          <p>
+            <span>Current Version</span>
+            <b>PharmaStock Pro 1.0.0</b>
+          </p>
+
+          <p>
+            <span>Installer</span>
+            <b>Official Windows Setup</b>
+          </p>
+
+        </div>
+
       </div>
+
     </section>
 
-    <section class="cta container reveal">
-      <div><span>START TODAY</span><h2>Bring smarter management to your pharmacy.</h2><p>Download the official PharmaStock Pro installer for Windows.</p></div>
-      <a class="primary download-link" href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.0/PharmaStock-Pro-Setup-1.0.0.exe" download><span>↓</span><div><small>Get version 1.0.0</small>Download Now</div></a>
+    <!-- Developer Section -->
+    <section class="section container" id="developer">
+
+      <div class="developer-card reveal">
+
+        <div class="developer-decoration decoration-one"></div>
+        <div class="developer-decoration decoration-two"></div>
+
+        <div class="developer-logo">
+          <img
+            src="assets/P-logo.png"
+            alt="PharmaStock Pro"
+          >
+        </div>
+
+        <div class="developer-content">
+          <span>DESIGNED & DEVELOPED BY</span>
+
+          <h2>MANMOHAN SINGH</h2>
+
+          <h3>B.Pharm Student • Founder, PharmaStock</h3>
+
+          <p>
+            Passionately building a modern pharmacy management
+            solution to make medicine inventory, billing and daily
+            medical-store operations easier and more organised.
+          </p>
+
+          <div class="developer-labels">
+            <span>B.Pharm Student</span>
+            <span>Software Developer</span>
+            <span>Made in India</span>
+          </div>
+        </div>
+
+        <div class="developer-signature">
+          <span>Developed by</span>
+          <b>B.Pharm Student<br>MANMOHAN SINGH</b>
+        </div>
+
+      </div>
+
     </section>
+
+    <!-- CTA -->
+    <section class="cta container reveal">
+
+      <div class="cta-glow"></div>
+
+      <div>
+        <span>START TODAY</span>
+
+        <h2>
+          Bring smarter management
+          to your pharmacy.
+        </h2>
+
+        <p>
+          Download the official PharmaStock Pro installer for Windows.
+        </p>
+      </div>
+
+      <a
+        class="primary download-link"
+        href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.0/PharmaStock-Pro-Setup-1.0.0.exe"
+      >
+        <span class="download-icon">↓</span>
+
+        <div>
+          <small>Get Version 1.0.0</small>
+          Download Now
+        </div>
+      </a>
+
+    </section>
+
   </main>
 
+  <!-- Footer -->
   <footer>
+
     <div class="container footer-grid">
-      <div class="footer-brand"><div class="brand"><img src="assets/P-logo.png" alt=""><span>PharmaStock <b>Pro</b></span></div><p>Smart Pharmacy. Smarter Business.</p></div>
-      <div><h4>Product</h4><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#download">Download</a></div>
-      <div><h4>Support</h4><a href="mailto:supportpharmastock@gmail.com">Email Support</a><a href="#requirements">Requirements</a></div>
+
+      <div class="footer-brand">
+
+        <a class="brand" href="#home">
+          <div class="brand-logo-wrap">
+            <img
+              src="assets/P-logo.png"
+              alt="PharmaStock logo"
+            >
+          </div>
+
+          <span>
+            PharmaStock
+            <b>Pro</b>
+          </span>
+        </a>
+
+        <p>
+          Smart Pharmacy.<br>
+          Smarter Business.
+        </p>
+
+        <div class="footer-version">
+          Version 1.0.0
+        </div>
+
+      </div>
+
+      <div>
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#download">Download</a>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <a href="#developer">About Developer</a>
+        <a href="#home">PharmaStock Pro</a>
+        <a href="#features">Our Product</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+
+        <a href="mailto:supportpharmastock@gmail.com">
+          Email Support
+        </a>
+
+        <a
+          href="https://github.com/supportpharmastock-code/PharmaStock"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+
     </div>
-    <div class="container copyright">© <span id="year"></span> PharmaStock. All rights reserved. <span>Version 1.0.0</span></div>
+
+    <div class="container developer-footer">
+      <span>Designed & Developed by</span>
+      <b>B.Pharm Student MANMOHAN SINGH</b>
+      <small>Made with passion in India 🇮🇳</small>
+    </div>
+
+    <div class="container copyright">
+
+      <p>
+        © <span id="year"></span> PharmaStock Pro.
+        All rights reserved.
+      </p>
+
+      <span>Version 1.0.0</span>
+
+    </div>
+
   </footer>
 
-  <div class="toast" id="toast"><b>✓ Download starting</b><small>Open the installer after download completes.</small></div>
+  <!-- Download Toast -->
+  <div class="toast" id="toast">
+
+    <div class="toast-icon">✓</div>
+
+    <div>
+      <b>Download Starting</b>
+      <small>
+        Open the installer after the download completes.
+      </small>
+    </div>
+
+    <button
+      type="button"
+      id="closeToast"
+      aria-label="Close notification"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <!-- Screenshot Lightbox -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+  >
+
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      type="button"
+      aria-label="Close screenshot"
+    >
+      ×
+    </button>
+
+    <div class="lightbox-content">
+      <img
+        id="lightboxImage"
+        src=""
+        alt="Software screenshot preview"
+      >
+
+      <h3 id="lightboxTitle">
+        PharmaStock Pro
+      </h3>
+    </div>
+
+  </div>
+
   <script src="script.js"></script>
+
 </body>
 </html>
