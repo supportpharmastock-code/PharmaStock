@@ -53,7 +53,7 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Organization structured data -->
-  <script id="organizationStructuredData" type="application/ld+json">
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -78,7 +78,7 @@
   </script>
 
   <!-- Software application structured data -->
-  <script id="softwareStructuredData" type="application/ld+json">
+  <script type="application/ld+json" id="softwareStructuredData">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -119,7 +119,7 @@
   }
   </script>
 </head>
-<body data-pharmastock-version="1.0.1" data-pharmastock-release-tag="v1.0.1">
+<body data-current-version="1.0.1">
   <div class="loader" id="loader">
     <div class="loader-glow"></div>
     <img src="assets/P-logo.png" alt="PharmaStock Pro logo" class="loader-logo" fetchpriority="high">
@@ -155,7 +155,7 @@
         <a href="#screenshots">Screenshots</a>
         <a href="#requirements">Requirements</a>
         <a href="#developer">Developer</a>
-        <a class="download-small download-link"  data-release-download="true"href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.1/PharmaStock-Pro-Setup-1.0.1.exe">Download</a>
+        <a class="download-small download-link" data-download-link href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.1/PharmaStock-Pro-Setup-1.0.1.exe">Download</a>
       </div>
     </nav>
   </header>
@@ -164,19 +164,19 @@
     <section class="hero container">
       <div class="hero-copy reveal">
         <div class="hero-badges">
-          <span class="badge" data-release-version="badge"><i></i> Version 1.0.1 Available</span>
+          <span class="badge"><i></i> Version <span data-software-version>1.0.1</span> Available</span>
           <span class="india-badge">🇮🇳 Proudly Developed in India</span>
         </div>
         <h1>The Future of <span>Pharmacy Management Software.</span></h1>
         <p class="hero-subtitle">PharmaStock Pro is professional pharmacy billing and medicine inventory software for Windows. Manage purchases, sales, GST invoices, stock, expiry alerts and reports through one powerful medical store application.</p>
         <div class="hero-points"><span>Fast Billing</span><span>Secure Data</span><span>Smart Inventory</span></div>
         <div class="hero-buttons" id="download">
-          <a class="primary download-link"  data-release-download="true"href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.1/PharmaStock-Pro-Setup-1.0.1.exe">
+          <a class="primary download-link" data-download-link href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.1/PharmaStock-Pro-Setup-1.0.1.exe">
             <span class="download-icon">↓</span><div><small>Download PharmaStock Pro</small>Windows 10 / 11</div>
           </a>
           <a class="secondary" href="#screenshots"><span class="play-icon">▶</span>View Software</a>
         </div>
-        <div class="meta"><span>Windows 10 / 11</span><span>64-bit Recommended</span><span>Secure Installer</span><span data-release-version="label">Version 1.0.1</span></div>
+        <div class="meta"><span>Windows 10 / 11</span><span>64-bit Recommended</span><span>Secure Installer</span><span>Version <span data-software-version>1.0.1</span></span></div>
       </div>
 
       <div class="hero-preview reveal">
@@ -198,7 +198,7 @@
       <div class="quick-item reveal"><div><strong class="counter" data-target="100">0</strong><b>%</b></div><span>Organised Workflow</span></div>
       <div class="quick-item reveal"><div><strong class="counter" data-target="6">0</strong><b>+</b></div><span>Powerful Modules</span></div>
       <div class="quick-item reveal"><div><strong class="counter" data-target="64">0</strong><b>-bit</b></div><span>Windows Support</span></div>
-      <div class="quick-item reveal"><div><strong data-release-version="plain">1.0.1</strong></div><span>Current Version</span></div>
+      <div class="quick-item reveal"><div><strong data-software-version>1.0.1</strong></div><span>Current Version</span></div>
     </div></section>
 
     <section class="section container" id="features">
@@ -231,7 +231,7 @@
 
     <section class="section container" id="requirements"><div class="requirements reveal">
       <div class="requirements-copy"><span>WINDOWS APPLICATION</span><h2>Pharmacy software ready for your PC.</h2><p>PharmaStock Pro is designed for modern Windows desktop systems with secure internet connectivity.</p><div class="requirement-tags"><span>Windows 10</span><span>Windows 11</span><span>64-bit</span></div></div>
-      <div class="req-list"><p><span>Operating System</span><b>Windows 10 or Windows 11</b></p><p><span>Architecture</span><b>64-bit Recommended</b></p><p><span>Internet</span><b>Required for Cloud Features</b></p><p><span>Current Version</span><b data-release-version="product">PharmaStock Pro 1.0.1</b></p><p><span>Installer</span><b>Official Windows Setup</b></p></div>
+      <div class="req-list"><p><span>Operating System</span><b>Windows 10 or Windows 11</b></p><p><span>Architecture</span><b>64-bit Recommended</b></p><p><span>Internet</span><b>Required for Cloud Features</b></p><p><span>Current Version</span><b>PharmaStock Pro <span data-software-version>1.0.1</span></b></p><p><span>Installer</span><b>Official Windows Setup</b></p></div>
     </div></section>
 
     <section class="section container" id="developer"><div class="developer-card reveal">
@@ -241,12 +241,12 @@
       <div class="developer-signature"><span>Developed by</span><b>B.Pharm Student<br>MANMOHAN SINGH</b></div>
     </div></section>
 
-    <section class="cta container reveal"><div class="cta-glow"></div><div><span>START TODAY</span><h2>Bring smarter management to your pharmacy.</h2><p>Download the official PharmaStock Pro pharmacy management software installer for Windows.</p></div><a class="primary download-link"  data-release-download="true"href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.1/PharmaStock-Pro-Setup-1.0.1.exe"><span class="download-icon">↓</span><div><small data-release-version="cta">Get Version 1.0.1</small>Download Now</div></a></section>
+    <section class="cta container reveal"><div class="cta-glow"></div><div><span>START TODAY</span><h2>Bring smarter management to your pharmacy.</h2><p>Download the official PharmaStock Pro pharmacy management software installer for Windows.</p></div><a class="primary download-link" data-download-link href="https://github.com/supportpharmastock-code/PharmaStock/releases/download/v1.0.1/PharmaStock-Pro-Setup-1.0.1.exe"><span class="download-icon">↓</span><div><small>Get Version <span data-software-version>1.0.1</span></small>Download Now</div></a></section>
   </main>
 
   <footer>
     <div class="container footer-grid">
-      <div class="footer-brand"><a class="brand" href="#home"><div class="brand-logo-wrap"><img src="assets/P-logo.png" alt="PharmaStock Pro logo" loading="lazy" decoding="async"></div><span>PharmaStock <b>Pro</b></span></a><p>Smart Pharmacy.<br>Smarter Business.</p><div class="footer-version" data-release-version="label">Version 1.0.1</div></div>
+      <div class="footer-brand"><a class="brand" href="#home"><div class="brand-logo-wrap"><img src="assets/P-logo.png" alt="PharmaStock Pro logo" loading="lazy" decoding="async"></div><span>PharmaStock <b>Pro</b></span></a><p>Smart Pharmacy.<br>Smarter Business.</p><div class="footer-version">Version <span data-software-version>1.0.1</span></div></div>
       <div><h4>Product</h4><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#requirements">Requirements</a><a href="#download">Download</a></div>
       <div><h4>Company</h4><a href="#developer">About Developer</a><a href="#home">PharmaStock Pro</a><a href="#features">Our Product</a></div>
       <div><div>
@@ -257,7 +257,7 @@
 </div>
     </div>
     <div class="container developer-footer"><span>Designed & Developed by</span><b>B.Pharm Student MANMOHAN SINGH</b><small>Made with passion in India 🇮🇳</small></div>
-    <div class="container copyright"><p>© <span id="year"></span> PharmaStock Pro. All rights reserved.</p><span data-release-version="label">Version 1.0.1</span></div>
+    <div class="container copyright"><p>© <span id="year"></span> PharmaStock Pro. All rights reserved.</p><span>Version <span data-software-version>1.0.1</span></span></div>
   </footer>
 
   <div class="toast" id="toast"><div class="toast-icon">✓</div><div><b>Download Starting</b><small>Open the installer after the download completes.</small></div><button type="button" id="closeToast" aria-label="Close notification">×</button></div>
