@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: update-pharmastock-website
+  cancel-in-progress: false
+
 jobs:
   update-website:
     runs-on: ubuntu-latest
@@ -17,146 +21,171 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
-      - name: Update website version and download links
+      - name: Update website version and download URL
         env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
-          MANUAL_TAG: ${{ inputs.release_tag }}
+          EVENT_PATH: ${{ github.event_path }}
           REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           python3 <<'PY'
           import json
           import os
           import re
+          import urllib.request
           from pathlib import Path
 
-          tag = (os.environ.get("RELEASE_TAG") or "").strip()
+          event_path = Path(os.environ["EVENT_PATH"])
+          event = json.loads(event_path.read_text(encoding="utf-8"))
 
-          # For manual testing, use the latest published release through GitHub API.
-          if not tag:
-              import urllib.request
+          release = event.get("release")
+
+          # Manual run: load latest published release from GitHub.
+          if not release:
               api_url = f"https://api.github.com/repos/{os.environ['REPOSITORY']}/releases/latest"
               request = urllib.request.Request(
                   api_url,
                   headers={
                       "Accept": "application/vnd.github+json",
                       "User-Agent": "PharmaStock-Website-Updater"
-                  }
+                  },
               )
               with urllib.request.urlopen(request) as response:
-                  tag = json.load(response)["tag_name"]
+                  release = json.load(response)
+
+          tag = str(release.get("tag_name", "")).strip()
+          if not tag:
+              raise SystemExit("Release tag was not found.")
 
           version = tag[1:] if tag.lower().startswith("v") else tag
-          repository = os.environ["REPOSITORY"]
-          installer_name = f"PharmaStock-Pro-Setup-{version}.exe"
-          download_url = (
-              f"https://github.com/{repository}/releases/download/"
-              f"{tag}/{installer_name}"
+
+          # Prefer the actual Windows .exe uploaded to this release.
+          assets = release.get("assets") or []
+          exe_assets = [
+              asset for asset in assets
+              if str(asset.get("name", "")).lower().endswith(".exe")
+          ]
+
+          if not exe_assets:
+              raise SystemExit(
+                  "No .exe asset found in the published release. "
+                  "Upload the installer before publishing the release."
+              )
+
+          # Prefer a PharmaStock Setup installer if multiple EXEs exist.
+          installer = next(
+              (
+                  asset for asset in exe_assets
+                  if "pharmastock" in str(asset.get("name", "")).lower()
+                  and "setup" in str(asset.get("name", "")).lower()
+              ),
+              exe_assets[0],
           )
-          release_url = f"https://github.com/{repository}/releases/tag/{tag}"
+
+          download_url = str(installer.get("browser_download_url", "")).strip()
+          if not download_url:
+              raise SystemExit("Installer download URL was not found.")
+
+          release_url = str(release.get("html_url", "")).strip()
+          if not release_url:
+              release_url = (
+                  f"https://github.com/{os.environ['REPOSITORY']}/releases/tag/{tag}"
+              )
 
           path = Path("index.html")
           if not path.exists():
-              raise SystemExit("index.html was not found in the main branch.")
+              raise SystemExit("index.html was not found on the main branch.")
 
           html = path.read_text(encoding="utf-8")
 
-          # Update body machine-readable version.
+          # Body version marker.
           html, body_count = re.subn(
               r'(<body\b[^>]*\bdata-current-version=["\'])[^"\']*(["\'])',
               rf'\g<1>{version}\g<2>',
               html,
               count=1,
-              flags=re.IGNORECASE
+              flags=re.IGNORECASE,
           )
 
-          # Update all visible version markers.
+          # All visible version labels.
           html, visible_count = re.subn(
               r'(<span\b[^>]*\bdata-software-version(?:=["\'][^"\']*["\'])?[^>]*>)'
               r'.*?'
               r'(</span>)',
               rf'\g<1>{version}\g<2>',
               html,
-              flags=re.IGNORECASE | re.DOTALL
+              flags=re.IGNORECASE | re.DOTALL,
           )
 
-          # Update every marked installer download link.
-          def replace_download_link(match):
-              opening = match.group(1)
+          # All marked download links.
+          def update_download(match):
+              before_href = match.group(1)
               quote = match.group(2)
-              return f'{opening}{download_url}{quote}'
+              return f"{before_href}{quote}{download_url}{quote}"
 
           html, link_count = re.subn(
-              r'(<a\b(?=[^>]*\bdata-download-link\b)[^>]*\bhref=)(["\'])'
-              r'[^"\']*'
-              r'\2',
-              replace_download_link,
+              r'(<a\b(?=[^>]*\bdata-download-link\b)[^>]*\bhref=)'
+              r'(["\'])[^"\']*\2',
+              update_download,
               html,
-              flags=re.IGNORECASE
+              flags=re.IGNORECASE,
           )
 
-          # Update SoftwareApplication structured data values.
-          json_block_pattern = re.compile(
+          # SoftwareApplication JSON-LD.
+          json_pattern = re.compile(
               r'(<script\b[^>]*\bid=["\']softwareStructuredData["\'][^>]*>)'
               r'(.*?)'
               r'(</script>)',
-              re.IGNORECASE | re.DOTALL
+              re.IGNORECASE | re.DOTALL,
           )
-          block_match = json_block_pattern.search(html)
+          block = json_pattern.search(html)
 
-          if not block_match:
+          if not block:
               raise SystemExit("softwareStructuredData JSON-LD block was not found.")
 
-          json_text = block_match.group(2).strip()
-          data = json.loads(json_text)
+          data = json.loads(block.group(2).strip())
           data["softwareVersion"] = version
           data["downloadUrl"] = download_url
           data["installUrl"] = download_url
           data["releaseNotes"] = release_url
 
-          formatted_json = json.dumps(data, ensure_ascii=False, indent=2)
-          replacement_block = (
-              block_match.group(1)
+          replacement = (
+              block.group(1)
               + "\n"
-              + formatted_json
+              + json.dumps(data, ensure_ascii=False, indent=2)
               + "\n  "
-              + block_match.group(3)
-          )
-          html = (
-              html[:block_match.start()]
-              + replacement_block
-              + html[block_match.end():]
+              + block.group(3)
           )
 
+          html = html[:block.start()] + replacement + html[block.end():]
+
           if body_count != 1:
-              raise SystemExit("data-current-version marker was not found exactly once.")
+              raise SystemExit("data-current-version marker must exist exactly once.")
           if visible_count < 1:
-              raise SystemExit("No data-software-version markers were found.")
+              raise SystemExit("No data-software-version marker was found.")
           if link_count < 1:
-              raise SystemExit("No data-download-link markers were found.")
+              raise SystemExit("No data-download-link marker was found.")
 
           path.write_text(html, encoding="utf-8")
 
-          print(f"Website updated to version {version}")
-          print(f"Updated {visible_count} visible version labels")
-          print(f"Updated {link_count} installer download links")
-          print(f"Installer URL: {download_url}")
+          print(f"Website version: {version}")
+          print(f"Installer: {installer.get('name')}")
+          print(f"Download URL: {download_url}")
+          print(f"Updated visible labels: {visible_count}")
+          print(f"Updated download links: {link_count}")
           PY
 
       - name: Commit website update
         run: |
           if git diff --quiet -- index.html; then
-            echo "No website changes were needed."
+            echo "Website is already up to date."
             exit 0
-          fi
-
-          TAG="${{ github.event.release.tag_name }}"
-          if [ -z "$TAG" ]; then
-            TAG="latest release"
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add index.html
-          git commit -m "Update website for ${TAG}"
+          git commit -m "Update website for ${{ github.event.release.tag_name || 'latest release' }}"
           git push origin main
